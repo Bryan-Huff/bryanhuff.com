@@ -10,40 +10,101 @@ import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 	<head>
 		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
 	</head>
+
 	<body>
 		<Header />
+
 		<main>
-			<h1>🧑‍🚀 Hello, Astronaut!</h1>
-			<p>
-				Welcome to the official <a href="https://astro.build/">Astro</a> blog starter template. This template
-				serves as a lightweight, minimally-styled starting point for anyone looking to build a personal
-				website, blog, or portfolio with Astro.
-			</p>
-			<p>
-				This template comes with a few integrations already configured in your{' '}
-				<code>astro.config.mjs</code> file. You can customize your setup with{' '}
-				<a href="https://astro.build/integrations">Astro Integrations</a> to add tools like Tailwind,
-				React, or Vue to your project.
-			</p>
-			<p>Here are a few ideas on how to get started with the template:</p>
-			<ul>
-				<li>Edit this page in <code>src/pages/index.astro</code></li>
-				<li>Edit the site header items in <code>src/components/Header.astro</code></li>
-				<li>Add your name to the footer in <code>src/components/Footer.astro</code></li>
-				<li>Check out the included blog posts in <code>src/content/blog/</code></li>
-				<li>Customize the blog post page layout in <code>src/layouts/BlogPost.astro</code></li>
-			</ul>
-			<p>
-				Have fun! If you get stuck, remember to{' '}
-				<a href="https://docs.astro.build/">read the docs</a>{' '}
-				or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-			</p>
-			<p>
-				Looking for a blog template with a bit more personality? Check out{' '}
-				<a href="https://github.com/Charca/astro-blog-template">astro-blog-template</a>{' '}
-				by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-			</p>
+			<section class="hero">
+				<p class="eyebrow">Cybersecurity · Homelab · Technical Projects</p>
+
+				<h1>Bryan Huff</h1>
+
+				<p class="intro">
+        Welcome to my site! I'm building cybersecurity experience through hands-on work in
+        infrastructure, security research, and software projects.
+				</p>
+
+				<div class="actions">
+					<a class="primary" href="/projects">View Projects</a>
+					<a href="/blog">Read the Blog</a>
+				</div>
+			</section>
+
+			<section>
+				<h2>What I am working on</h2>
+
+				<p>
+					My main focus is building and administering a segmented homelab,
+          which I use to develop my cybersecurity and system administration skills. 
+          I document the implementation, the decisions that shaped it, 
+          and what I learn along the way.
+				</p>
+
+				<p>
+					This site is where that work lives. It will include project writeups, 
+          software projects, security research, and sanitized homelab documentation.
+				</p>
+			</section>
 		</main>
+
 		<Footer />
 	</body>
 </html>
+
+<style>
+	.hero {
+		padding: 4rem 0 3rem;
+	}
+
+	.eyebrow {
+		margin-bottom: 0.75rem;
+		font-size: 0.9rem;
+		font-weight: 700;
+		letter-spacing: 0.08em;
+		text-transform: uppercase;
+		color: var(--accent);
+	}
+
+	h1 {
+		margin: 0;
+		font-size: clamp(2.5rem, 8vw, 4.5rem);
+		line-height: 1;
+	}
+
+	.intro {
+		max-width: 44rem;
+		margin-top: 1.5rem;
+		font-size: 1.25rem;
+		line-height: 1.6;
+	}
+
+	.actions {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 1rem;
+		margin-top: 2rem;
+	}
+
+	.actions a {
+		text-decoration: none;
+		font-weight: 700;
+	}
+
+	.actions .primary {
+		padding: 0.75rem 1rem;
+		border-radius: 0.4rem;
+		background: var(--accent);
+		color: white;
+	}
+
+	section + section {
+		margin-top: 3rem;
+	}
+
+	@media (max-width: 720px) {
+		.hero {
+			padding-top: 2.5rem;
+		}
+	}
+</style>
