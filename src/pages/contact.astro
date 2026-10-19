@@ -1,30 +1,20 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead
-			title="Contact | Bryan Huff"
-			description="Contact Bryan Huff."
-		/>
-	</head>
+<BaseLayout
+	title="Contact | Bryan Huff"
+	description="Contact Bryan Huff."
+>
+	<h1>Contact</h1>
 
-	<body>
-		<Header />
+	<p>
+		The best way to reach me is by email at{' '}
+		<a href="mailto:contact@bryanhuff.com">contact@bryanhuff.com</a>.
+	</p>
 
-		<main>
-			<h1>Contact</h1>
-
-			<p>
-      The best way to reach me is by email at{` `}
-				<a href="mailto:contact@bryanhuff.com">contact@bryanhuff.com</a>.
-			</p>
-		</main>
-
-		<Footer />
-	</body>
-</html>
+	<p>
+		You can also find my public work on GitHub and connect with me on LinkedIn
+		using the links in the footer.
+	</p>
+</BaseLayout>

@@ -1,56 +1,43 @@
 ---
-import BaseHead from '../components/BaseHead.astro';
-import Footer from '../components/Footer.astro';
-import Header from '../components/Header.astro';
+import BaseLayout from '../layouts/BaseLayout.astro';
 import { SITE_DESCRIPTION, SITE_TITLE } from '../consts';
 ---
 
-<!doctype html>
-<html lang="en">
-	<head>
-		<BaseHead title={SITE_TITLE} description={SITE_DESCRIPTION} />
-	</head>
+<BaseLayout
+	title={SITE_TITLE}
+	description={SITE_DESCRIPTION}
+>
+	<section class="hero">
+		<p class="eyebrow">Cybersecurity · Homelab · Technical Projects</p>
 
-	<body>
-		<Header />
+		<h1>Bryan Huff</h1>
 
-		<main>
-			<section class="hero">
-				<p class="eyebrow">Cybersecurity · Homelab · Technical Projects</p>
+		<p class="intro">
+			I am building practical cybersecurity experience through hands-on infrastructure,
+			security research, software projects, and technical documentation.
+		</p>
 
-				<h1>Bryan Huff</h1>
+		<div class="actions">
+			<a class="primary" href="/projects">View Projects</a>
+			<a href="/blog">Read the Blog</a>
+		</div>
+	</section>
 
-				<p class="intro">
-        Welcome to my site! I'm building cybersecurity experience through hands-on work in
-        infrastructure, security research, and software projects.
-				</p>
+	<section>
+		<h2>What I am working on</h2>
 
-				<div class="actions">
-					<a class="primary" href="/projects">View Projects</a>
-					<a href="/blog">Read the Blog</a>
-				</div>
-			</section>
+		<p>
+			My current work focuses on building and operating a segmented homelab,
+			developing cybersecurity and systems-administration skills, and documenting
+			the engineering decisions, implementation process, and lessons learned along the way.
+		</p>
 
-			<section>
-				<h2>What I am working on</h2>
-
-				<p>
-					My main focus is building and administering a segmented homelab,
-          which I use to develop my cybersecurity and system administration skills. 
-          I document the implementation, the decisions that shaped it, 
-          and what I learn along the way.
-				</p>
-
-				<p>
-					This site is where that work lives. It will include project writeups, 
-          software projects, security research, and sanitized homelab documentation.
-				</p>
-			</section>
-		</main>
-
-		<Footer />
-	</body>
-</html>
+		<p>
+			This site serves as a public record of that work, including project writeups,
+			sanitized homelab documentation, security research, and software projects.
+		</p>
+	</section>
+</BaseLayout>
 
 <style>
 	.hero {
