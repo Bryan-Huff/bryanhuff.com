@@ -64,7 +64,7 @@ const projects = (await getCollection('projects')).sort((a, b) => {
 
 	.project-card {
 		padding: 1.5rem;
-		border: 1px solid rgb(var(--gray-light));
+		border: 1px solid var(--border);
 		border-radius: 0.5rem;
 	}
 
@@ -101,7 +101,8 @@ const projects = (await getCollection('projects')).sort((a, b) => {
 	.technologies li {
 		padding: 0.25rem 0.6rem;
 		border-radius: 999px;
-		background: rgb(var(--gray-light));
+    background: var(--surface);
+    color: var(--text);
 		font-size: 0.875rem;
 	}
 </style>
