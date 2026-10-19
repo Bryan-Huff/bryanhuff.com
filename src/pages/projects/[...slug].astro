@@ -1,0 +1,90 @@
+---
+import { getCollection, render } from 'astro:content';
+import BaseLayout from '../../layouts/BaseLayout.astro';
+
+export async function getStaticPaths() {
+	const projects = await getCollection('projects');
+
+	return projects.map((project) => ({
+		params: { slug: project.id },
+		props: { project },
+	}));
+}
+
+const { project } = Astro.props;
+const { Content } = await render(project);
+---
+
+<BaseLayout
+	title={`${project.data.title} | Bryan Huff`}
+	description={project.data.description}
+>
+	<header class="project-header">
+		<div class="project-title">
+			<h1>{project.data.title}</h1>
+			<span class="status">{project.data.status}</span>
+		</div>
+
+		<p class="description">{project.data.description}</p>
+
+		<ul class="technologies">
+			{
+				project.data.technologies.map((technology) => (
+					<li>{technology}</li>
+				))
+			}
+		</ul>
+	</header>
+
+	<article class="project-content">
+		<Content />
+	</article>
+</BaseLayout>
+
+<style>
+	.project-header {
+		margin-bottom: 3rem;
+	}
+
+	.project-title {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.project-title h1 {
+		margin-bottom: 0;
+	}
+
+	.status {
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: var(--accent);
+	}
+
+	.description {
+		max-width: 48rem;
+		font-size: 1.15rem;
+	}
+
+	.technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0;
+		margin: 1.5rem 0 0;
+		list-style: none;
+	}
+
+	.technologies li {
+		padding: 0.25rem 0.6rem;
+		border-radius: 999px;
+		background: rgb(var(--gray-light));
+		font-size: 0.875rem;
+	}
+
+	.project-content {
+		margin-top: 2rem;
+	}
+</style>

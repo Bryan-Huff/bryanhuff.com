@@ -1,5 +1,13 @@
 ---
 import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const projects = (await getCollection('projects')).sort((a, b) => {
+	const orderA = a.data.order ?? 999;
+	const orderB = b.data.order ?? 999;
+
+	return orderA - orderB;
+});
 ---
 
 <BaseLayout
@@ -17,4 +25,83 @@ import BaseLayout from '../layouts/BaseLayout.astro';
 		Project writeups focus on design decisions, implementation, validation,
 		troubleshooting, and lessons learned.
 	</p>
+
+	<div class="project-grid">
+		{
+			projects.map((project) => (
+				<article class="project-card">
+					<div class="project-header">
+						<h2>
+							<a href={`/projects/${project.id}/`}>
+								{project.data.title}
+							</a>
+						</h2>
+
+						<span class="status">{project.data.status}</span>
+					</div>
+
+					<p>{project.data.description}</p>
+
+					<ul class="technologies">
+						{
+							project.data.technologies.map((technology) => (
+								<li>{technology}</li>
+							))
+						}
+					</ul>
+				</article>
+			))
+		}
+	</div>
 </BaseLayout>
+
+<style>
+	.project-grid {
+		display: grid;
+		gap: 1.5rem;
+		margin-top: 2rem;
+	}
+
+	.project-card {
+		padding: 1.5rem;
+		border: 1px solid rgb(var(--gray-light));
+		border-radius: 0.5rem;
+	}
+
+	.project-header {
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 1rem;
+	}
+
+	.project-header h2 {
+		margin: 0;
+	}
+
+	.project-header a {
+		text-decoration: none;
+	}
+
+	.status {
+		font-size: 0.875rem;
+		font-weight: 700;
+		color: var(--accent);
+	}
+
+	.technologies {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+		padding: 0;
+		margin: 1rem 0 0;
+		list-style: none;
+	}
+
+	.technologies li {
+		padding: 0.25rem 0.6rem;
+		border-radius: 999px;
+		background: rgb(var(--gray-light));
+		font-size: 0.875rem;
+	}
+</style>
